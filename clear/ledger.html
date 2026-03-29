@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LedgerFlow - Finance Dashboard</title>
+
+<style>
+/* GENERAL */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar h2 {
+  margin: 0;
+}
+
+.navbar div {
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+/* LAYOUT */
+.container {
+  padding: 20px;
+}
+
+/* CARD STYLE */
+.card {
+  background: white;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* GRID */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card.small {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* FORM */
+input, button {
+  padding: 8px;
+  margin: 5px;
+  width: 90%;
+}
+
+button {
+  background: #2d6cdf;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1b4fb8;
+}
+
+/* LIST ITEMS */
+.item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+</style>
+</head>
+
+<body>
+
+
+<div class="navbar">
+  <h2>📊 LedgerFlow</h2>
+  <div>
+    Dashboard | Clients | Invoices | Payments 🔐
+  </div>
+</div>
+
+<div class="container">
+
+
+  <div class="grid">
+    <div class="card small">
+      <h3>Total Clients</h3>
+      <p id="clientCount">0</p>
+    </div>
+
+    <div class="card small">
+      <h3>Total Invoices</h3>
+      <p id="invoiceCount">0</p>
+    </div>
+
+    <div class="card small">
+      <h3>Total Revenue</h3>
+      <p id="revenue">$0</p>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <h3>Add Client</h3>
+    <input type="text" id="clientName" placeholder="Client Name">
+    <button onclick="addClient()">Add Client</button>
+    <div id="clients"></div>
+  </div>
+
+
+  <div class="card">
+    <h3>Create Invoice</h3>
+    <input type="text" id="invoiceClient" placeholder="Client Name">
+    <input type="number" id="amount" placeholder="Amount ($)">
+    <button onclick="addInvoice()">Create Invoice</button>
+    <div id="invoices"></div>
+  </div>
+
+</div>
+
+<script>
+let clients = [];
+let invoices = [];
+let totalRevenue = 0;
+
+
+function addClient() {
+  const name = document.getElementById("clientName").value;
+  if (!name) return alert("Enter client name");
+
+  clients.push(name);
+  document.getElementById("clientName").value = "";
+
+  displayClients();
+  updateDashboard();
+}
+
+
+function displayClients() {
+  const list = document.getElementById("clients");
+  list.innerHTML = "";
+
+  clients.forEach(c => {
+    const div = document.createElement("div");
+    div.className = "item";
+    div.textContent = c;
+    list.appendChild(div);
+  });
+}
+
+
+function addInvoice() {
+  const client = document.getElementById("invoiceClient").value;
+  const amount = parseFloat(document.getElementById("amount").value);
+
+  if (!client || !amount) return alert("Fill all fields");
+
+  invoices.push({ client, amount });
+  totalRevenue += amount;
+
+  document.getElementById("invoiceClient").value = "";
+  document.getElementById("amount").value = "";
+
+  displayInvoices();
+  updateDashboard();
+}
+
+
+function displayInvoices() {
+  const list = document.getElementById("invoices");
+  list.innerHTML = "";
+
+  invoices.forEach(inv => {
+    const div = document.createElement("div");
+    div.className = "item";
+    div.innerHTML = `${inv.client} - $${inv.amount}`;
+    list.appendChild(div);
+  });
+}
+
+
+function updateDashboard() {
+  document.getElementById("clientCount").textContent = clients.length;
+  document.getElementById("invoiceCount").textContent = invoices.length;
+  document.getElementById("revenue").textContent = "$" + totalRevenue;
+}
+</script>
+
+</body>
+</html>
