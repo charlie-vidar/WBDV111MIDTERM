@@ -3,75 +3,1028 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J Zone Motor Repair Shop | Performance & Precision</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
-    <script src="https://fontawesome.com" crossorigin="anonymous"></script>
+    <title>ZONE MOTOR REPAIR SHOP</title>
+    <!-- Using FontAwesome for Icons (CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            /* Brand Colors based on Image Description */
+            --primary-red: #D32F2F;
+            --primary-yellow: #FFC107;
+            --accent-green: #388E3C;
+            --text-dark: #333333;
+            --text-light: #F5F5F5;
+            --bg-light: #F9F9F9;
+            --bg-dark: #1A1A1A;
+            --sidebar-bg: #2C3E50;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Impact', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-yellow);
+            background-color: var(--primary-red);
+            padding: 5px 15px;
+            border: 3px solid var(--primary-yellow);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 0.8rem;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 1px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            margin-top: 2px;
+            padding-top: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-yellow);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: white;
+            border: 2px solid var(--primary-red);
+        }
+        .btn-primary:hover {
+            background-color: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid var(--primary-yellow);
+        }
+        .btn-secondary:hover {
+            background-color: var(--primary-yellow);
+            color: var(--bg-dark);
+        }
+
+        .btn-action {
+            background-color: var(--accent-green);
+            color: white;
+        }
+        .btn-action:hover {
+            background-color: #2E7D32;
+        }
+
+        /* --- SECTIONS COMMON STYLES --- */
+        section {
+            padding: 4rem 1rem;
+            min-height: 80vh; /* Ensure sections feel substantial */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-yellow);
+            margin: 10px auto 0;
+        }
+
+        /* --- HOME SECTION (MOTOR PARTS THEME) --- */
+        #home {
+            /* Updated Background to Engine Parts */
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100vh;
+            padding-top: 60px; /* offset header */
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-family: 'Impact', sans-serif;
+            color: var(--primary-yellow);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .fi-badge {
+            display: inline-block;
+            background: var(--accent-green);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* --- ABOUT US --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--sidebar-bg);
+            margin-bottom: 1rem;
+        }
+        
+        /* Image updated to Mechanic with parts */
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            border-left: 10px solid var(--primary-red);
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* --- PRODUCTS & SERVICES (PARTS FOCUS) --- */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .card-img {
+            height: 200px;
+            background-color: #ddd;
+            overflow: hidden;
+        }
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--sidebar-bg);
+        }
+
+        .card-price {
+            color: var(--primary-red);
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* --- CONTACT US & ORDER --- */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            border-top: 5px solid var(--accent-green);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        /* --- LOGIN / SIGNUP --- */
+        #login-signup {
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+        
+        .auth-card {
+            background: white;
+            width: 400px;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+        .auth-card h2 { color: var(--primary-red); margin-bottom: 1.5rem; }
+        .role-demo {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: left;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .role-demo a { color: var(--primary-red); font-weight: bold; }
+
+        /* --- DASHBOARDS (USER, ADMIN, SUPER ADMIN) --- */
+        /* Layout for Dashboards */
+        .dashboard-wrapper {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+            background-color: #f4f6f9;
+        }
+
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .sidebar-header {
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .sidebar-header h4 { color: var(--primary-yellow); }
+
+        .sidebar-menu li a {
+            display: block;
+            padding: 12px 20px;
+            color: rgba(255,255,255,0.7);
+            transition: var(--transition);
+        }
+
+        .sidebar-menu li a:hover, .sidebar-menu li a.active {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border-left: 4px solid var(--primary-yellow);
+        }
+
+        .sidebar-menu li i { width: 25px; }
+
+        .main-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stat-info h3 { font-size: 2rem; color: var(--text-dark); margin-bottom: 5px; }
+        .stat-info p { color: #777; font-size: 0.9rem; }
+        .stat-icon {
+            font-size: 2.5rem;
+            opacity: 0.2;
+        }
+        .stat-icon.red { color: var(--primary-red); }
+        .stat-icon.green { color: var(--accent-green); }
+        .stat-icon.yellow { color: var(--primary-yellow); }
+
+        /* Tables */
+        .table-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .status {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .status.pending { background-color: #FFF3CD; color: #856404; }
+        .status.completed { background-color: #D4EDDA; color: #155724; }
+        .status.cancelled { background-color: #F8D7DA; color: #721C24; }
+
+        /* Section Visibility Helper for Dashboard Demo */
+        /* Since we don't use JS, we just stack dashboards vertically in HTML */
+        /* We will add a distinct visual separator between dashboards */
+        .dash-separator {
+            height: 100px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--bg-dark),
+                var(--bg-dark) 10px,
+                #000 10px,
+                #000 20px
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: #777;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 1rem; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .dashboard-wrapper { grid-template-columns: 1fr; }
+            .sidebar { padding: 1rem 0; display: flex; overflow-x: auto; }
+            .sidebar-menu { display: flex; width: 100%; }
+            .sidebar-menu li a { white-space: nowrap; border-left: none; border-bottom: 4px solid transparent; }
+            .sidebar-menu li a:hover { border-bottom: 4px solid var(--primary-yellow); }
+            .about-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header & Navigation -->
-    <header>
-        <nav class="container">
-            <div class="logo">J ZONE<span> MOTORSHOP</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#locations">Locations</a></li>
-                <li><a href="https://www.facebook.com/JZONEoriginal/" target="_blank">Facebook</a></li>
-            </ul>
-            <a href="tel:+639163425410" class="cta-btn">Call Now</a>
-        </nav>
+    <!-- MAIN HEADER (Visible for Public Pages) -->
+    <header id="main-header">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                ZONE
+                <span>MOTOR REPAIR SHOP</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Parts & Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#order">Order</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#login-signup" class="btn btn-secondary">Login / Signup</a>
+            </div>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content container">
-            <h1>Performance Meets Precision</h1>
-            <p>Your expert for FI Cleaning, Performance Upgrades, and Trusted Maintenance.</p>
-            <div class="hero-buttons">
-                <a href="#services" class="btn primary">Our Services</a>
-                <a href="#locations" class="btn secondary">Find a Shop</a>
+    <!-- PUBLIC PAGES -->
+    <main>
+        <!-- Home Section -->
+        <section id="home">
+            <div class="container hero-content">
+                <span class="fi-badge">FI CLEANING SERVICES</span>
+                <h1>ZONE MOTOR PARTS</h1>
+                <p>Quality spare parts, professional engine diagnostics, and expert repair services.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="#order" class="btn btn-primary" style="padding: 15px 30px; font-size: 1.2rem;">Find a Part</a>
+                    <a href="#services" class="btn btn-secondary" style="padding: 15px 30px; font-size: 1.2rem;">Our Services</a>
+                </div>
             </div>
+        </section>
+
+        <!-- About Us -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About Us</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>Specialists in Motor Parts</h3>
+                        <p>Welcome to <strong>ZONE MOTOR REPAIR SHOP</strong>. We are your one-stop shop for high-quality motorcycle components and precision repair work.</p>
+                        <br>
+                        <p>From carburetor tuning to full engine rebuilds, we stock a massive inventory of genuine and aftermarket motor parts. Our "FI Cleaning Services" ensure your fuel injection system runs at peak efficiency.</p>
+                        <br>
+                        <ul style="margin-left: 20px; list-style: circle;">
+                            <li>1000+ Spare Parts in Stock</li>
+                            <li>Engine Diagnostics</li>
+                            <li>Professional Mechanics</li>
+                            <li>Fast Shipping & Installation</li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <!-- Image: Mechanic working on an engine -->
+                        <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=800&auto=format&fit=crop" alt="Mechanic working on motor parts">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products and Services (Updated to Motor Parts) -->
+        <section id="services" style="background-color: white;">
+            <div class="container">
+                <h2 class="section-title">Spare Parts & Services</h2>
+                <div class="grid-3">
+                    <!-- Service 1 -->
+                    <div class="card">
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=600&auto=format&fit=crop" alt="Engine Gears"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">Engine Repair & Gears</h3>
+                            <p class="card-price">Starting at $150</p>
+                            <p>Complete transmission and engine repair. We replace pistons, rings, and gears with precision.</p>
+                        </div>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="card">
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1536226538287-dbf45e2e6645?q=80&w=600&auto=format&fit=crop" alt="Tools and Metal"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">FI Cleaning Service</h3>
+                            <p class="card-price">$50.00</p>
+                            <p>Specialized Fuel Injection cleaning to remove carbon deposits and restore fuel flow.</p>
+                        </div>
+                    </div>
+                    <!-- Product 1 -->
+                    <div class="card">
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1626265774633-8b5c0972f2a9?q=80&w=600&auto=format&fit=crop" alt="Motor Oil Bottle"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">Premium Synthetic Oil</h3>
+                            <p class="card-price">$25.00 / Bottle</p>
+                            <p>High-performance motor oil designed to protect engine parts and reduce friction.</p>
+                        </div>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="card">
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=600&auto=format&fit=crop" alt="Brake Discs"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">Brake Pads & Discs</h3>
+                            <p class="card-price">$30.00</p>
+                            <p>Genuine OEM and high-performance aftermarket brake components for all models.</p>
+                        </div>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="card">
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1558618047-f4b511d58d45?q=80&w=600&auto=format&fit=crop" alt="Motorcycle Tire Tread"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">Tires & Wheels</h3>
+                            <p class="card-price">$15.00 / Wheel</p>
+                            <p>Top brand tires (Michelin, Pirelli, Dunlop) and professional wheel balancing.</p>
+                        </div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="card">
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=600&auto=format&fit=crop" alt="Motorcycle Handlebars"></div>
+                        <div class="card-body">
+                            <h3 class="card-title">Performance Parts</h3>
+                            <p class="card-price">Varies</p>
+                            <p>Upgrade your ride with handlebars, levers, chain sprockets, and exhaust systems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="grid-3" style="grid-template-columns: 1fr 1fr;">
+                    <div class="form-container">
+                        <form action="#">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" placeholder="Your Email">
+                            </div>
+                            <div class="form-group">
+                                <label>Inquiry about Part/Service</label>
+                                <textarea class="form-control" rows="5" placeholder="Part number or Service details..."></textarea>
+                            </div>
+                            <button type="button" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                    <div style="display: flex; flex-direction: column; justify-content: center; padding-left: 2rem;">
+                        <h3>Visit Our Shop</h3>
+                        <p style="margin: 1rem 0;"><i class="fas fa-map-marker-alt" style="color:var(--primary-red); width:20px;"></i> 123 Motorway Avenue, Auto City</p>
+                        <p style="margin: 1rem 0;"><i class="fas fa-phone" style="color:var(--primary-red); width:20px;"></i> (555) 123-4567</p>
+                        <p style="margin: 1rem 0;"><i class="fas fa-envelope" style="color:var(--primary-red); width:20px;"></i> parts@zonemotors.com</p>
+                        <div style="margin-top: 2rem; background: #eee; height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                            <span style="color: #777;">Google Map Placeholder</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Order Section -->
+        <section id="order" style="background-color: white;">
+            <div class="container">
+                <h2 class="section-title">Order a Part or Service</h2>
+                <div class="form-container" style="max-width: 800px;">
+                    <form action="#">
+                        <div class="grid-3" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label>Motorcycle Make & Model</label>
+                                <input type="text" class="form-control" placeholder="e.g. Honda CBR 600">
+                            </div>
+                            <div class="form-group">
+                                <label>Year</label>
+                                <input type="text" class="form-control" placeholder="e.g. 2020">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Request Type</label>
+                            <select class="form-control">
+                                <option>Order Spare Part</option>
+                                <option>Book Service</option>
+                                <option>FI Cleaning</option>
+                                <option>General Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Part Name or Service Details</label>
+                            <input type="text" class="form-control" placeholder="e.g. Clutch Kit, Oil Filter, Chain...">
+                        </div>
+                        <div class="form-group">
+                            <label>Additional Notes</label>
+                            <textarea class="form-control" rows="3" placeholder="Specific part numbers or symptoms..."></textarea>
+                        </div>
+                        <div style="text-align: right;">
+                            <button type="button" class="btn btn-action" style="padding: 10px 40px;">Submit Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login / Signup -->
+        <section id="login-signup">
+            <div class="auth-card">
+                <h2>Member Login</h2>
+                <form action="#">
+                    <div class="form-group" style="text-align: left;">
+                        <label>Username / Email</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group" style="text-align: left;">
+                        <label>Password</label>
+                        <input type="password" class="form-control">
+                    </div>
+                    <button type="button" class="btn btn-primary" style="width: 100%;">Login</button>
+                </form>
+                
+                <p style="margin-top: 15px;">Don't have an account? <a href="#" style="color:var(--primary-red);">Sign Up</a></p>
+
+                <!-- Demo Links (Simulation) -->
+                <div class="role-demo">
+                    <p><strong>Demo Login (No JS):</strong></p>
+                    <p><i class="fas fa-user"></i> <a href="#user-dashboard">User Dashboard</a></p>
+                    <p><i class="fas fa-user-cog"></i> <a href="#admin-dashboard">Admin Dashboard</a></p>
+                    <p><i class="fas fa-user-shield"></i> <a href="#super-admin-dashboard">Super Admin Dashboard</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- DASHBOARD SEPARATORS (Visual break for the demo) -->
+    <div class="dash-separator">
+        APP SIMULATION AREA
+    </div>
+
+    <!-- USER DASHBOARD -->
+    <section id="user-dashboard">
+        <div class="dashboard-wrapper">
+            <!-- User Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h4>ZONE USER</h4>
+                    <p>Welcome, John Doe</p>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-motorcycle"></i> My Orders</a></li>
+                    <li><a href="#"><i class="fas fa-user-circle"></i> Profile</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#home" style="color: #e74c3c;"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+                </ul>
+            </aside>
+            <!-- User Content -->
+            <main class="main-content">
+                <div class="dash-header">
+                    <h2>My Dashboard</h2>
+                    <span class="badge">Status: Active</span>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>3</h3>
+                            <p>Total Orders</p>
+                        </div>
+                        <div class="stat-icon red"><i class="fas fa-shopping-cart"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>1</h3>
+                            <p>In Progress</p>
+                        </div>
+                        <div class="stat-icon yellow"><i class="fas fa-wrench"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>$250</h3>
+                            <p>Spent Total</p>
+                        </div>
+                        <div class="stat-icon green"><i class="fas fa-wallet"></i></div>
+                    </div>
+                </div>
+
+                <h3>Recent Activity</h3>
+                <div class="table-container" style="margin-top: 1rem;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Part / Service</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#ORD-001</td>
+                                <td>Brake Pads</td>
+                                <td>Oct 24, 2023</td>
+                                <td><span class="status completed">Shipped</span></td>
+                                <td><a href="#">Track</a></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-002</td>
+                                <td>FI Cleaning</td>
+                                <td>Oct 26, 2023</td>
+                                <td><span class="status pending">Scheduled</span></td>
+                                <td><a href="#">Details</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services container">
-        <h2 class="section-title">Our Specialty Services</h2>
-        <div class="service-grid">
-            <div class="service-card">
-                <h3>FI Cleaning</h3>
-                <p>Keep your engine running efficiently with professional fuel injection maintenance.</p>
-            </div>
-            <div class="service-card">
-                <h3>Performance Upgrades</h3>
-                <p>Expert installation of premium parts to take your ride to the next level.</p>
-            </div>
-            <div class="service-card">
-                <h3>Routine Maintenance</h3>
-                <p>Reliable CVT cleaning, oil changes, and full tune-ups for daily riders.</p>
-            </div>
+    <!-- ADMIN DASHBOARD -->
+    <section id="admin-dashboard">
+        <div class="dashboard-wrapper">
+            <!-- Admin Sidebar -->
+            <aside class="sidebar" style="background-color: #34495e;">
+                <div class="sidebar-header">
+                    <h4>ADMIN PANEL</h4>
+                    <p>Manager Access</p>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-box-open"></i> Product Mgmt</a></li>
+                    <li><a href="#"><i class="fas fa-clipboard-list"></i> Orders</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> Reports</a></li>
+                    <li><a href="#home" style="color: #e74c3c;"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+                </ul>
+            </aside>
+            <!-- Admin Content -->
+            <main class="main-content">
+                <div class="dash-header">
+                    <h2>Admin Overview</h2>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p>New Orders</p>
+                        </div>
+                        <div class="stat-icon yellow"><i class="fas fa-inbox"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>5</h3>
+                            <p>Low Stock Items</p>
+                        </div>
+                        <div class="stat-icon red"><i class="fas fa-exclamation-triangle"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>$1,250</h3>
+                            <p>Revenue Today</p>
+                        </div>
+                        <div class="stat-icon green"><i class="fas fa-dollar-sign"></i></div>
+                    </div>
+                </div>
+
+                <div class="grid-3" style="grid-template-columns: 2fr 1fr;">
+                    <div class="table-container">
+                        <h3>Latest Orders</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Customer</th>
+                                    <th>Item</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#992</td>
+                                    <td>Alice Smith</td>
+                                    <td>Oil Filter</td>
+                                    <td><span class="status completed">Paid</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#993</td>
+                                    <td>Bob Jones</td>
+                                    <td>Chain Kit</td>
+                                    <td><span class="status pending">Processing</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#994</td>
+                                    <td>Charlie Day</td>
+                                    <td>Tires (2)</td>
+                                    <td><span class="status cancelled">Refunded</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-container">
+                        <h3>Quick Actions</h3>
+                        <ul style="margin-top: 10px;">
+                            <li style="padding: 10px 0; border-bottom: 1px solid #eee;"><a href="#">+ Add New Part</a></li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid #eee;"><a href="#">+ Update Inventory</a></li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid #eee;"><a href="#">View Monthly Reports</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
         </div>
     </section>
 
-    <!-- Footer / Locations -->
-    <footer id="locations">
-        <div class="container footer-content">
-            <div class="footer-info">
-                <h3>J Zone Locations</h3>
-                <p><strong>Caloocan:</strong> 2nd Ave corner F. Roxas Brgy 45</p>
-                <p><strong>Valenzuela:</strong> 43 Pag-asa Street</p>
-                <p><strong>Santo Domingo:</strong> Purok 5, Malasin</p>
-            </div>
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <p>Phone: +63 916 342 5410</p>
-                <p><a href="https://www.facebook.com/JZONEoriginal/" target="_blank">Visit our Facebook Page</a></p>
-            </div>
+    <!-- SUPER ADMIN DASHBOARD -->
+    <section id="super-admin-dashboard">
+        <div class="dashboard-wrapper">
+            <!-- Super Admin Sidebar -->
+            <aside class="sidebar" style="background-color: #1a252f;">
+                <div class="sidebar-header">
+                    <h4 style="color: var(--primary-yellow);">SUPER ADMIN</h4>
+                    <p>System Root</p>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="active"><i class="fas fa-globe"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-users-cog"></i> Admin Mgmt</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> User Mgmt</a></li>
+                    <li><a href="#"><i class="fas fa-file-invoice"></i> Reports</a></li>
+                    <li><a href="#"><i class="fas fa-sliders-h"></i> Site Settings</a></li>
+                    <li><a href="#home" style="color: #e74c3c;"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+                </ul>
+            </aside>
+            <!-- Super Admin Content -->
+            <main class="main-content">
+                <div class="dash-header">
+                    <h2>System Control</h2>
+                    <button class="btn btn-primary">Backup Database</button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>3</h3>
+                            <p>Total Admins</p>
+                        </div>
+                        <div class="stat-icon"><i class="fas fa-user-shield"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>1,204</h3>
+                            <p>Total Users</p>
+                        </div>
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>99.9%</h3>
+                            <p>Server Uptime</p>
+                        </div>
+                        <div class="stat-icon green"><i class="fas fa-server"></i></div>
+                    </div>
+                </div>
+
+                <div class="grid-3" style="grid-template-columns: 1fr 1fr;">
+                    <div class="table-container">
+                        <h3>Manage Admins</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Sarah Connor</td>
+                                    <td>Manager</td>
+                                    <td><button class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.8rem;">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>John Wick</td>
+                                    <td>Editor</td>
+                                    <td><button class="btn btn-secondary" style="padding: 2px 8px; font-size: 0.8rem;">Edit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-container">
+                        <h3>Site Settings</h3>
+                        <form>
+                            <div class="form-group">
+                                <label>Site Name</label>
+                                <input type="text" class="form-control" value="ZONE MOTOR REPAIR">
+                            </div>
+                            <div class="form-group">
+                                <label>Maintenance Mode</label>
+                                <select class="form-control">
+                                    <option>Disabled</option>
+                                    <option>Enabled</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-action">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
         </div>
-        <div class="copyright">
-            &copy; 2024 J Zone Motor Repair Shop. All Rights Reserved.
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="display: inline-block; font-size: 1.5rem; margin-bottom: 1rem;">
+                ZONE
+            </div>
+            <p>&copy; 2023 Zone Motor Repair Shop. All rights reserved.</p>
+            <p>FI Cleaning Services &bull; General Repair &bull; Spare Parts</p>
         </div>
     </footer>
 
